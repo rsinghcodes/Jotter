@@ -1,25 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Button, Grommet, Heading, ResponsiveContext } from 'grommet';
+import { User } from 'grommet-icons';
+
+// components
+import AppBar from './components/AppBar';
 
 function App() {
+  const theme = {
+    global: {
+      font: {
+        family: 'Manrope',
+      },
+    },
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grommet theme={theme} themeMode="dark" full>
+      <ResponsiveContext.Consumer>
+        {(size) => (
+          <Box fill>
+            <AppBar>
+              <Heading level="3" margin="none">
+                Jotter
+              </Heading>
+              <Button
+                primary
+                label="Login"
+                plain={false}
+                icon={<User />}
+                onClick={() => {}}
+              />
+            </AppBar>
+          </Box>
+        )}
+      </ResponsiveContext.Consumer>
+    </Grommet>
   );
 }
 
