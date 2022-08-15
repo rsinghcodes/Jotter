@@ -13,9 +13,8 @@ const AppBar = ({ children }: Props) => {
         direction="row"
         align="center"
         justify="between"
-        pad={{ left: 'medium', right: 'small', vertical: 'small' }}
-        elevation="xsmall"
-        style={{ zIndex: '1' }}
+        alignSelf="center"
+        width="xlarge"
       >
         {children}
       </Box>
