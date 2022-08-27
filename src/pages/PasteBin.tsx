@@ -1,20 +1,59 @@
 import React from 'react';
-import { Box, Heading, TextArea } from 'grommet';
-import { Cycle, Save } from 'grommet-icons';
+import { Text, Tooltip } from '@nextui-org/react';
+import { FiSave, FiCopy } from 'react-icons/fi';
+import { GrPowerReset } from 'react-icons/gr';
+
+// components
+import { Box } from 'components/Box';
+import { IconButton } from 'components/IconButton';
 
 const PasteBin = () => {
   return (
-    <Box flex align="center" justify="center" direction="column">
-      <Box fill="horizontal" flex direction="row" align="center">
-        <Heading level={3} size="4" color="dark-3">
+    <Box
+      css={{
+        width: '95%',
+        '@xsMax': { width: '100%' },
+      }}
+    >
+      <Box
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <Text h3 css={{ letterSpacing: '0.2px' }}>
           Create a new paste
-        </Heading>
-        <Cycle style={{ marginLeft: '1rem' }} cursor="pointer" />
-        <Save style={{ marginLeft: '1rem' }} cursor="pointer" />
+        </Text>
+        <Tooltip content="Copy Text">
+          <IconButton
+            onClick={() => console.log('Edit')}
+            css={{ ml: '$6', mb: '$4' }}
+          >
+            <FiCopy size={20} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip content="Reset Text" color="error">
+          <IconButton
+            onClick={() => console.log('Reset')}
+            css={{ ml: '$5', mb: '$4' }}
+          >
+            <GrPowerReset size={20} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip content="Save and Get Share Link" color="success">
+          <IconButton
+            onClick={() => console.log('Reset')}
+            css={{ ml: '$5', mb: '$4' }}
+          >
+            <FiSave size={20} />
+          </IconButton>
+        </Tooltip>
       </Box>
-      <TextArea
-        placeholder="type here"
-        style={{ borderRadius: '0px', minHeight: '70vh', width: '77vw' }}
+      <textarea
+        rows={20}
+        style={{ width: '100%', padding: '1rem', borderRadius: '10px' }}
+        placeholder="Enter a text here..."
       />
     </Box>
   );
