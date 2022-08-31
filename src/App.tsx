@@ -6,13 +6,12 @@ import { NextUIProvider, createTheme } from '@nextui-org/react';
 // components
 import { Layout } from 'components/Layout';
 import { Box } from 'components/Box';
-import { AppLogo } from './Icons/AppLogo';
-import Register from 'pages/Register';
 
 // pages
-const Home = lazy(() => import('./pages/Home'));
-const Login = lazy(() => import('./pages/Login'));
-const PasteBin = lazy(() => import('./pages/PasteBin'));
+const Home = lazy(() => import('pages/Home'));
+const Login = lazy(() => import('pages/Login'));
+const Register = lazy(() => import('pages/Register'));
+const PasteBin = lazy(() => import('pages/PasteBin'));
 
 function App() {
   const theme = createTheme({
@@ -29,8 +28,7 @@ function App() {
       <Layout>
         <Navbar isBordered variant="floating">
           <Navbar.Brand>
-            <AppLogo />
-            <Text b color="inherit" hideIn="xs">
+            <Text b color="inherit">
               JOTTER
             </Text>
           </Navbar.Brand>

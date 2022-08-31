@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, Spacer, Image, Button, Tooltip } from '@nextui-org/react';
-import { Link } from 'react-router-dom';
+import { Text, Spacer, Image, Button, Tooltip, Link } from '@nextui-org/react';
+// import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -20,14 +20,11 @@ const Home = () => {
         Scribble Notes and Share Instatnously, Preview Them, Make Notebooks and
         Take Private Notes
       </Text>
-      <Link to="/pastebin">
-        <Tooltip
-          content={'Click here to create sharable notes'}
-          placement="bottom"
-        >
-          <Button css={{ mt: '$lg' }}>Pastebin</Button>
-        </Tooltip>
-      </Link>
+      <Tooltip content="Click here to create sharable notes" placement="right">
+        <Button css={{ mt: '$lg' }} as={Link} href="/pastebin">
+          Pastebin
+        </Button>
+      </Tooltip>
       <Spacer y={1} />
     </>
   );
