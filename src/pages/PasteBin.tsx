@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Textarea, Tooltip } from '@nextui-org/react';
+import { Input, Text, Tooltip } from '@nextui-org/react';
 import { FiSave, FiCopy } from 'react-icons/fi';
 import { GrPowerReset } from 'react-icons/gr';
 
@@ -11,8 +11,7 @@ const PasteBin = () => {
   return (
     <Box
       css={{
-        width: '95%',
-        '@xsMax': { width: '100%' },
+        width: '100%',
       }}
     >
       <Box
@@ -50,8 +49,9 @@ const PasteBin = () => {
           </IconButton>
         </Tooltip>
       </Box>
-      <Textarea
-        minRows={16}
+      <Input.Textarea
+        bordered
+        rows={20}
         css={{ width: '100%' }}
         placeholder="Enter a text here..."
       />
