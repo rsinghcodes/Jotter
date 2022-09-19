@@ -1,11 +1,12 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Navbar, Button, Text, Loading, Link } from '@nextui-org/react';
+import { Loading } from '@nextui-org/react';
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 
 // components
 import { Layout } from 'components/Layout';
 import { Box } from 'components/Box';
+import AppBar from 'components/AppBar';
 
 // pages
 const Home = lazy(() => import('pages/Home'));
@@ -26,23 +27,7 @@ function App() {
   return (
     <NextUIProvider theme={theme}>
       <Layout>
-        <Navbar isBordered variant="floating">
-          <Navbar.Brand>
-            <Text b color="inherit">
-              JOTTER
-            </Text>
-          </Navbar.Brand>
-          <Navbar.Content>
-            <Navbar.Link color="inherit" href="/accounts/login">
-              Sign In
-            </Navbar.Link>
-            <Navbar.Item>
-              <Button auto as={Link} href="/accounts/register">
-                Sign Up
-              </Button>
-            </Navbar.Item>
-          </Navbar.Content>
-        </Navbar>
+        <AppBar />
         <Suspense
           fallback={
             <Box
