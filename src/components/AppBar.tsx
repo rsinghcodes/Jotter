@@ -29,14 +29,7 @@ const AppBar = () => {
         <Dropdown placement="bottom-right">
           <Navbar.Item>
             <Dropdown.Trigger>
-              <Avatar
-                bordered
-                as="button"
-                color="primary"
-                size="lg"
-                text="R"
-                textColor="white"
-              />
+              <Avatar bordered as="button" text="Text" />
             </Dropdown.Trigger>
           </Navbar.Item>
           <Dropdown.Menu
