@@ -1,57 +1,35 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Loading } from '@nextui-org/react';
+import { Box, Flex, Spinner } from '@chakra-ui/react';
+import { Toaster } from 'react-hot-toast';
 
 // components
-import { Layout } from 'components/Layout';
-import { Box } from 'components/Box';
 import AppBar from 'components/AppBar';
 
 // pages
 const Home = lazy(() => import('pages/Home'));
-const Login = lazy(() => import('pages/Login'));
-const Register = lazy(() => import('pages/Register'));
-const PasteBin = lazy(() => import('pages/PasteBin'));
+const Docs = lazy(() => import('pages/Docs'));
 
 function App() {
   return (
-    <Layout>
+    <>
+      <Toaster />
       <AppBar />
       <Suspense
         fallback={
-          <Box
-            css={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              minHeight: '100vh',
-            }}
-          >
-            <Loading type="gradient" />
-          </Box>
+          <Flex justifyContent="center" alignItems="center" minH="90vh">
+            <Spinner />
+          </Flex>
         }
       >
-        <Box
-          css={{
-            px: '$16',
-            mt: '$8',
-            '@xsMax': { px: '$10' },
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '80vh',
-          }}
-        >
+        <Box>
           <Routes>
             <Route index element={<Home />} />
-            <Route path="/accounts/login" element={<Login />} />
-            <Route path="/accounts/register" element={<Register />} />
-            <Route path="/pastebin" element={<PasteBin />} />
+            <Route path="/docs" element={<Docs />} />
           </Routes>
         </Box>
       </Suspense>
-    </Layout>
+    </>
   );
 }
 

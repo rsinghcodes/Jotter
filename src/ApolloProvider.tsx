@@ -6,7 +6,8 @@ import {
   HttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { NextUIProvider, createTheme } from '@nextui-org/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+
 import App from './App';
 
 const httpLink = new HttpLink({
@@ -27,19 +28,17 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const theme = createTheme({
-  type: 'light',
-  theme: {
-    fonts: {
-      sans: "-apple-system, BlinkMacSystemFont, 'Manrope', 'Segoe UI', 'Roboto','Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;",
-    },
+const theme = extendTheme({
+  fonts: {
+    body: 'Manrope',
+    heading: 'Manrope',
   },
 });
 
 export default (
   <ApolloProvider client={client}>
-    <NextUIProvider theme={theme}>
+    <ChakraProvider theme={theme}>
       <App />
-    </NextUIProvider>
+    </ChakraProvider>
   </ApolloProvider>
 );

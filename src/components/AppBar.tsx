@@ -1,61 +1,62 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import {
-  Navbar,
-  Button,
-  Text,
-  Link,
-  Dropdown,
-  Avatar,
-} from '@nextui-org/react';
+  chakra,
+  Flex,
+  Heading,
+  IconButton,
+  Spacer,
+  useColorMode,
+  useColorModeValue,
+  Tooltip,
+} from '@chakra-ui/react';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
-const AppBar = () => {
+function AppBar() {
+  const bg = useColorModeValue('white', 'gray.800');
+  const { toggleColorMode } = useColorMode();
+  const SwitchIcon = useColorModeValue(FiMoon, FiSun);
+  const text = useColorModeValue('dark', 'light');
+
   return (
-    <Navbar isBordered variant="sticky">
-      <Navbar.Brand>
-        <Text b color="inherit">
-          Jotter
-        </Text>
-      </Navbar.Brand>
-      <Navbar.Content>
-        <Navbar.Link color="inherit" href="/accounts/login">
-          Sign In
-        </Navbar.Link>
-        <Navbar.Item>
-          <Button auto as={Link} href="/accounts/register">
-            Sign Up
-          </Button>
-        </Navbar.Item>
-
-        <Dropdown placement="bottom-right">
-          <Navbar.Item>
-            <Dropdown.Trigger>
-              <Avatar bordered as="button" text="Text" />
-            </Dropdown.Trigger>
-          </Navbar.Item>
-          <Dropdown.Menu
-            aria-label="User menu actions"
-            color="secondary"
-            onAction={(actionKey) => console.log({ actionKey })}
-          >
-            <Dropdown.Item key="profile" css={{ height: '$18' }}>
-              <Text b color="inherit" css={{ d: 'flex' }}>
-                Signed in as
-              </Text>
-              <Text b color="inherit" css={{ d: 'flex' }}>
-                email@gmail.com
-              </Text>
-            </Dropdown.Item>
-            <Dropdown.Item key="settings" withDivider>
-              Account Settings
-            </Dropdown.Item>
-            <Dropdown.Item key="logout" withDivider color="error">
-              Log Out
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Navbar.Content>
-    </Navbar>
+    <>
+      <chakra.header
+        shadow="sm"
+        transition="box-shadow 0.2s, background-color 0.2s"
+        pos="sticky"
+        top="0"
+        zIndex="3"
+        bg={bg}
+        left="0"
+        right="0"
+        width="full"
+      >
+        <chakra.div height="4.5rem" mx="auto" maxW="8xl">
+          <Flex w="100%" h="100%" px="5" align="center" justify="space-between">
+            <Flex alignItems="center" as={NavLink} to="/">
+              <Heading fontSize={{ base: '1.3rem', lg: '1.7rem' }}>
+                Jotter
+              </Heading>
+            </Flex>
+            <Spacer />
+            <Flex justify="flex-end" align="center">
+              <Tooltip hasArrow label={`Switch to ${text} mode`} fontSize="sm">
+                <IconButton
+                  size="md"
+                  fontSize="lg"
+                  aria-label={`Switch to ${text} mode`}
+                  variant="ghost"
+                  color="current"
+                  onClick={toggleColorMode}
+                  icon={<SwitchIcon />}
+                />
+              </Tooltip>
+            </Flex>
+          </Flex>
+        </chakra.div>
+      </chakra.header>
+    </>
   );
-};
+}
 
 export default AppBar;
