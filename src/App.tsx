@@ -8,6 +8,7 @@ import AppBar from 'components/AppBar';
 
 // pages
 const Home = lazy(() => import('pages/Home'));
+const DocsCollections = lazy(() => import('pages/DocsCollections'));
 const Docs = lazy(() => import('pages/Docs'));
 
 function App() {
@@ -18,14 +19,15 @@ function App() {
       <Suspense
         fallback={
           <Flex justifyContent="center" alignItems="center" minH="90vh">
-            <Spinner />
+            <Spinner size="xl" />
           </Flex>
         }
       >
         <Box>
           <Routes>
             <Route index element={<Home />} />
-            <Route path="/docs" element={<Docs />} />
+            <Route path="/docs" element={<DocsCollections />} />
+            <Route path="/docs/37sh6628829" element={<Docs />} />
           </Routes>
         </Box>
       </Suspense>

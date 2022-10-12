@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { Text, Image, Button, Heading, Flex } from '@chakra-ui/react';
-import GoogleLogin from 'react-google-login';
-import { FcGoogle } from 'react-icons/fc';
-import { useNavigate } from 'react-router-dom';
+// import GoogleLogin from 'react-google-login';
+// import { FcGoogle } from 'react-icons/fc';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { gapi } from 'gapi-script';
 import toast from 'react-hot-toast';
+import { BiRightArrowAlt } from 'react-icons/bi';
 
 import { GOOGLE_AUTH_USER } from 'queries/google';
 
@@ -59,7 +60,7 @@ const Home = () => {
         Scribble Notes and Share Instatnously, Preview Them, Make Notebooks and
         Take Private Notes
       </Text>
-      <GoogleLogin
+      {/* <GoogleLogin
         clientId={clientId}
         render={(renderProps) => (
           <Button
@@ -76,7 +77,16 @@ const Home = () => {
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
-      />
+      /> */}
+      <Button
+        rightIcon={<BiRightArrowAlt size="1.2rem" />}
+        borderRadius="24px"
+        p="6"
+        as={Link}
+        to="/docs"
+      >
+        Get Started
+      </Button>
     </Flex>
   );
 };
