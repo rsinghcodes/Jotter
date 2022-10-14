@@ -9,8 +9,15 @@ import {
   useColorMode,
   useColorModeValue,
   Tooltip,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  MenuDivider,
 } from '@chakra-ui/react';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { BsPerson } from 'react-icons/bs';
 
 function AppBar() {
   const bg = useColorModeValue('white', 'gray.800');
@@ -51,6 +58,24 @@ function AppBar() {
                   icon={<SwitchIcon />}
                 />
               </Tooltip>
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  size="md"
+                  fontSize="lg"
+                  variant="ghost"
+                  icon={<BsPerson />}
+                />
+                <MenuList>
+                  <MenuGroup title="Profile">
+                    <MenuItem>My Account</MenuItem>
+                  </MenuGroup>
+                  <MenuDivider />
+                  <MenuGroup>
+                    <MenuItem>Logout</MenuItem>
+                  </MenuGroup>
+                </MenuList>
+              </Menu>
             </Flex>
           </Flex>
         </chakra.div>
